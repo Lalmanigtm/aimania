@@ -9,7 +9,7 @@ export const login = async (req: Request, res: Response) => {
     try {
         const { token } = req.body;
         const decoded = await getAuth(app).verifyIdToken(token)
-        const user = await User.findOne({
+        let user = await User.findOne({
             firebaseUid: decoded.uid
         })
 
